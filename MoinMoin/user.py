@@ -211,7 +211,7 @@ def addLowerCaseKeys(cache):
     for attrname in CACHED_USER_ATTRS:
         attr2id = c[attrname]
         attr2id_lower = c[attrname + "_lower"] = {}
-        for key, value in attr2id.iteritems():
+        for key, value in attr2id.items():
             attr2id_lower[key.lower()] = value
     return c
 
@@ -701,7 +701,7 @@ class User:
                         pwd_context = self._cfg.cache.pwd_context
                         try:
                             password_correct = pwd_context.verify(password, d)
-                        except ValueError, err:
+                        except ValueError as err:
                             # can happen for unknown scheme
                             logging.error('in user profile %r, verifying the passlib pw hash crashed [%s]' % (self.id, str(err)))
                         if password_correct:
@@ -793,7 +793,7 @@ class User:
             elif isinstance(value, dict):
                 key += '{}'
                 value = encodeDict(value)
-            line = u"%s=%s" % (key, unicode(value))
+            line = u"%s=%s" % (key, str(value))
             line = line.replace('\n', ' ').replace('\r', ' ') # no lineseps
             data.write(line + '\n')
         data.close()
@@ -855,7 +855,7 @@ class User:
         """
         if self.valid:
             interwikiname = self._cfg.interwikiname or u''
-            bookmark = unicode(tm)
+            bookmark = str(tm)
             self.bookmarks[interwikiname] = bookmark
             self.save()
 

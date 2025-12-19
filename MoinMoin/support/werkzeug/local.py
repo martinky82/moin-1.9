@@ -331,7 +331,7 @@ class LocalProxy(object):
 
     def __unicode__(self):
         try:
-            return unicode(self._get_current_object())  # noqa
+            return str(self._get_current_object())  # noqa
         except RuntimeError:
             return repr(self)
 

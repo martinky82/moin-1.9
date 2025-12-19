@@ -45,7 +45,7 @@ class Markup(unicode):
         return unicode.__new__(self, text)
 
     def __add__(self, other):
-        return Markup(unicode(self) + Markup.escape(other))
+        return Markup(str(self) + Markup.escape(other))
 
     def __mod__(self, args):
         if not isinstance(args, (list, tuple)):
@@ -54,10 +54,10 @@ class Markup(unicode):
                                       tuple([escape(arg) for arg in args])))
 
     def __mul__(self, num):
-        return Markup(unicode(self) * num)
+        return Markup(str(self) * num)
 
     def join(self, seq):
-        return Markup(unicode(self).join([Markup.escape(item) for item in seq]))
+        return Markup(str(self).join([Markup.escape(item) for item in seq]))
 
     def stripentities(self, keepxmlentities=False):
         """Return a copy of the text with any character or numeric entities
@@ -105,7 +105,7 @@ class Markup(unicode):
         """
         if isinstance(text, (cls, Element)):
             return text
-        text = unicode(text)
+        text = str(text)
         if not text:
             return cls()
         text = text.replace('&', '&amp;') \
@@ -120,14 +120,14 @@ class Markup(unicode):
         """Reverse-escapes &, <, > and \" and returns a `unicode` object."""
         if not self:
             return ''
-        return unicode(self).replace('&#34;', '"') \
+        return str(self).replace('&#34;', '"') \
                             .replace('&gt;', '>') \
                             .replace('&lt;', '<') \
                             .replace('&amp;', '&')
 
     def plaintext(self, keeplinebreaks=True):
         """Returns the text as a `unicode`with all entities and tags removed."""
-        text = unicode(self.striptags().stripentities())
+        text = str(self.striptags().stripentities())
         if not keeplinebreaks:
             text = text.replace('\n', ' ')
         return text
@@ -314,7 +314,7 @@ class Fragment(object):
         """Generator that yield tags and text nodes as strings."""
         for child in self.children:
             if isinstance(child, Fragment):
-                yield unicode(child)
+                yield str(child)
             else:
                 yield escape(child, quotes=False)
 

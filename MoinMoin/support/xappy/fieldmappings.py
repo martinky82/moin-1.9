@@ -82,7 +82,7 @@ class FieldMappings(object):
         If the prefix is not found, return None.
 
         """
-        for key, val in self._prefixes.iteritems():
+        for key, val in self._prefixes.items():
             if val == prefix:
                 return key
         return None

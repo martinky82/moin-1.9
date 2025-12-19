@@ -65,7 +65,7 @@ General syntax: moin [options] import wikipage [wikipage-options]
 
         try:
             fileObj = open(self.options.file, 'rb')
-        except IOError, err:
+        except IOError as err:
             fatal(str(err))
         page_content = decodeUnknownInput(fileObj.read()).rstrip()
         fileObj.close()

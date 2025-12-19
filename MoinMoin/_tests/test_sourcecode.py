@@ -98,7 +98,7 @@ def check_py_file(reldir, path, mtime):
 def test_sourcecode():
     def walk(reldir):
         if reldir in EXCLUDE:
-            #print "Skippping %r..." % reldir
+            #print("Skippping %r...") % reldir
             return
         if reldir:
             path = os.path.join(ROOT, *reldir.split('/'))

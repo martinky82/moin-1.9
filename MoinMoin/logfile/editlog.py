@@ -180,7 +180,7 @@ class EditLog(LogFile):
                 import socket
                 try:
                     hostname = socket.gethostbyaddr(host)[0]
-                    hostname = unicode(hostname, config.charset)
+                    hostname = str(hostname, config.charset)
                 except (socket.error, UnicodeError):
                     hostname = host
             else:

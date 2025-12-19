@@ -112,4 +112,4 @@ space between words. Group page name is not allowed.""", wiki=True) % wikiutil.e
         buttons.append(html.INPUT(type="submit", name="cancel",
                                   value=_('Cancel')))
         self.make_row('', buttons)
-        return unicode(form)
+        return str(form)

@@ -195,7 +195,7 @@ class Converter(Parser):
             (\((?P<macro_args>.*?)\))?
             \]\]
         """
-        word = unicode(word) # XXX why is word not unicode before???
+        word = str(word) # XXX why is word not unicode before???
         m = re.match(macro_rule, word, re.X|re.U)
         macro_name = m.group('macro_name')
         macro_args = m.group('macro_args')

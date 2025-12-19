@@ -173,7 +173,7 @@ class Translation(object):
             self.ename = info['x-language-in-english']
             self.direction = info['x-direction']
             self.maintainer = info['last-translator']
-        except KeyError, err:
+        except KeyError as err:
             logging.warning("metadata problem in %r: %s" % (self.language, str(err)))
         try:
             assert self.direction in ('ltr', 'rtl', )
@@ -374,7 +374,7 @@ def requestLanguage(request):
 def wikiLanguages():
     """
     Return the available user languages in this wiki.
-    As we do everything in unicode (or utf-8) now, everything is available.
+    As we do everything in str(or utf-8) now, everything is available.
     """
     return languages
 

@@ -130,8 +130,7 @@ class django_des_crypt_test(HandlerCase, _DjangoHelper):
         ("password",         'crypt$c2e86$c2M87q...WWcU'),
         ("passwordignoreme", 'crypt$c2.AZ$c2M87q...WWcU'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_USD, 'crypt$c2e86$c2hN1Bxd6ZiWs'),
+        # ensures utf-8 used for str(UPASS_USD, 'crypt$c2e86$c2hN1Bxd6ZiWs'),
         (UPASS_TABLE, 'crypt$0.aQs$0.wB.TT0Czvlo'),
         (u("hell\u00D6"), "crypt$sa$saykDgk3BPZ9E"),
 
@@ -172,8 +171,7 @@ class django_salted_md5_test(HandlerCase, _DjangoHelper):
         # test django 1.4 alphanumeric salt
         ("test", 'md5$3OpqnFAHW5CT$54b29300675271049a1ebae07b395e20'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_USD,     'md5$c2e86$92105508419a81a6babfaecf876a2fa0'),
+        # ensures utf-8 used for str(UPASS_USD,     'md5$c2e86$92105508419a81a6babfaecf876a2fa0'),
         (UPASS_TABLE,   'md5$d9eb8$01495b32852bffb27cf5d4394fe7a54c'),
     ]
 
@@ -212,8 +210,7 @@ class django_salted_sha1_test(HandlerCase, _DjangoHelper):
         # test django 1.4 alphanumeric salt
         ("test", 'sha1$bcwHF9Hy8lxS$6b4cfa0651b43161c6f1471ce9523acf1f751ba3'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_USD,     'sha1$c2e86$0f75c5d7fbd100d587c127ef0b693cde611b4ada'),
+        # ensures utf-8 used for str(UPASS_USD,     'sha1$c2e86$0f75c5d7fbd100d587c127ef0b693cde611b4ada'),
         (UPASS_TABLE,   'sha1$6d853$ef13a4d8fb57aed0cb573fe9c82e28dc7fd372d4'),
 
         # generic password

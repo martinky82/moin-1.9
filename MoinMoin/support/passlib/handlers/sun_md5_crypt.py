@@ -151,7 +151,7 @@ def raw_sun_md5_crypt(secret, rounds, salt):
         h = md5(result)
         if coin:
             h.update(MAGIC_HAMLET)
-        h.update(unicode(round).encode("ascii"))
+        h.update(str(round).encode("ascii"))
         result = h.digest()
 
         round += 1
@@ -280,7 +280,7 @@ class sun_md5_crypt(uh.HasRounds, uh.HasSalt, uh.GenericHandler):
                 rounds = int(rstr)
             except ValueError:
                 raise uh.exc.MalformedHashError(cls, "bad rounds")
-            if rstr != unicode(rounds):
+            if rstr != str(rounds):
                 raise uh.exc.ZeroPaddedRoundsError(cls)
             if rounds == 0:
                 # NOTE: not sure if this is forbidden by spec or not;

@@ -140,7 +140,7 @@ newpassword:
                              notify=notify, skip_invalid=skip_invalid,
                              subject=subject,
                              text_intro=text_intro, text_msg=text_msg, text_data=text_data)
-            except Fault, err:
+            except Fault as err:
                 print str(err)
         elif self.options.uname:
             try:
@@ -148,7 +148,7 @@ newpassword:
                              notify=notify, skip_invalid=skip_invalid,
                              subject=subject,
                              text_intro=text_intro, text_msg=text_msg, text_data=text_data)
-            except Fault, err:
+            except Fault as err:
                 print str(err)
         elif self.options.all_users:
             uids = sorted(getUserList(request))
@@ -160,5 +160,5 @@ newpassword:
                                  notify=notify, skip_invalid=skip_invalid,
                                  subject=subject,
                                  text_intro=text_intro, text_msg=text_msg, text_data=text_data)
-                except Fault, err:
+                except Fault as err:
                     print str(err)

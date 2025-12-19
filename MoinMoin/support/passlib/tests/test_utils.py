@@ -315,15 +315,15 @@ class MiscTest(TestCase):
         ##        times.append(timeit.timeit(test, number=100000))
         ##        chars.append(len(supplied))
         ##    # output for wolfram alpha
-        ##    print ", ".join("{%r, %r}" % (c,round(t,4)) for c,t in zip(chars,times))
+        ##    print(", ").join("{%r, %r}" % (c,round(t,4)) for c,t in zip(chars,times))
         ##    def scale(c):
         ##        return logb(c,2)
-        ##    print ", ".join("{%r, %r}" % (scale(c),round(t,4)) for c,t in zip(chars,times))
+        ##    print(", ").join("{%r, %r}" % (scale(c),round(t,4)) for c,t in zip(chars,times))
         ##    # output for spreadsheet
         ##    ##if first:
-        ##    ##    print "na, " + ", ".join(str(c) for c in chars)
+        ##    ##    print("na, ") + ", ".join(str(c) for c in chars)
         ##    ##    first = False
-        ##    ##print ", ".join(str(c) for c in [run] + times)
+        ##    ##print(", ").join(str(c) for c in [run] + times)
 
     def test_saslprep(self):
         """test saslprep() unicode normalizer"""

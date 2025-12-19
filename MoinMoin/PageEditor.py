@@ -188,7 +188,7 @@ class PageEditor(Page):
                             ) + "<br>" + edit_lock_message
                     else:
                         msg = edit_lock_message
-            except OSError, err:
+            except OSError as err:
                 if err.errno == errno.ENAMETOOLONG:
                     msg = _("Page name is too long, try shorter name.")
                 else:
@@ -347,7 +347,7 @@ Please review the page and save then. Do not save this page as it is!""")
         # http://fplanque.net/2003/Articles/iecsstextarea/
         request.write('<fieldset style="border:none;padding:0;">')
 
-        request.write(unicode(html.INPUT(type="hidden", name="action", value="edit")))
+        request.write(str(html.INPUT(type="hidden", name="action", value="edit")))
 
         # Send revision of the page our edit is based on
         request.write('<input type="hidden" name="rev" value="%d">' % (rev, ))
@@ -358,7 +358,7 @@ Please review the page and save then. Do not save this page as it is!""")
         # Save backto in a hidden input
         backto = request.values.get('backto')
         if backto:
-            request.write(unicode(html.INPUT(type="hidden", name="backto", value=backto)))
+            request.write(str(html.INPUT(type="hidden", name="backto", value=backto)))
 
         # button bar
         button_spellcheck = '<input class="button" type="submit" name="button_spellcheck" value="%s" onClick="flgChange = false;">' % _('Check Spelling')
@@ -463,7 +463,7 @@ If you don't want that, hit '''%(cancel_button_text)s''' to cancel your changes.
         cat_pages.insert(0, ('', _('<No addition>')))
         request.write("<p>")
         request.write(_('Add to: %(category)s') % {
-            'category': unicode(web.makeSelection('category', cat_pages)),
+            'category': str(web.makeSelection('category', cat_pages)),
         })
 
         if self.cfg.mail_enabled:
@@ -585,13 +585,13 @@ Try a different name.""", wiki=True) % (wikiutil.escape(newpagename), )
             send_event(event)
 
             return True, None
-        except OSError, err:
+        except OSError as err:
             # Try to understand what happened. Maybe its better to check
             # the error code, but I just reused the available code above...
             if newpage.exists(includeDeleted=1):
                 return False, pageexists_error
             else:
-                return False, _('Could not copy page because of file system error: %s.') % unicode(err)
+                return False, _('Could not copy page because of file system error: %s.') % str(err)
 
     def renamePage(self, newpagename, comment=u''):
         """ Rename the current version of the page (making a backup before deletion
@@ -659,13 +659,13 @@ Try a different name.""", wiki=True) % (wikiutil.escape(newpagename), )
             send_event(event)
 
             return True, None
-        except OSError, err:
+        except OSError as err:
             # Try to understand what happened. Maybe its better to check
             # the error code, but I just reused the available code above...
             if newpage.exists(includeDeleted=1):
                 return False, pageexists_error
             else:
-                return False, _('Could not rename page because of file system error: %s.') % unicode(err)
+                return False, _('Could not rename page because of file system error: %s.') % str(err)
 
 
     def revertPage(self, revision, comment=u''):
@@ -967,7 +967,7 @@ Try a different name.""", wiki=True) % (wikiutil.escape(newpagename), )
                 try:
                     filesys.rename(cfn, clfn)
                     got_lock = True
-                except OSError, err:
+                except OSError as err:
                     got_lock = False
                     if err.errno == 2: # there was no 'current' file
                         time.sleep(0.1)
@@ -983,7 +983,7 @@ Try a different name.""", wiki=True) % (wikiutil.escape(newpagename), )
             f.close()
             try:
                 rev = int(revstr)
-            except ValueError, err:
+            except ValueError as err:
                 raise self.SaveError(_("Unable to determine current page revision from the 'current' file. The page %s is damaged and cannot be edited right now.") % self.page_name)
 
             if not was_deprecated:
@@ -995,7 +995,7 @@ Try a different name.""", wiki=True) % (wikiutil.escape(newpagename), )
                 f = file(cltfn, 'w')
                 f.write(revstr+'\n')
                 f.close()
-            except IOError, err:
+            except IOError as err:
                 try:
                     os.remove(cltfn)
                 except:

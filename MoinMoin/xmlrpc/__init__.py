@@ -87,7 +87,7 @@ class XmlRpcBase:
         @return: text
         """
         text = text.data # this is a already base64-decoded 8bit string
-        text = unicode(text, 'utf-8')
+        text = str(text, 'utf-8')
         return text
 
     def _outlob(self, text):
@@ -102,7 +102,7 @@ class XmlRpcBase:
             text = text.encode('utf-8')
         else:
             if config.charset != 'utf-8':
-                text = unicode(text, config.charset).encode('utf-8')
+                text = str(text, config.charset).encode('utf-8')
         return xmlrpclib.Binary(text)
 
     def _dump_exc(self):
@@ -1175,7 +1175,7 @@ class XmlRpc2(XmlRpcBase):
         @return: text
         """
         if not isinstance(text, unicode):
-            text = unicode(text, 'utf-8')
+            text = str(text, 'utf-8')
         return text
 
     def _outstr(self, text):
@@ -1189,7 +1189,7 @@ class XmlRpc2(XmlRpcBase):
         if isinstance(text, unicode):
             text = text.encode('utf-8')
         elif config.charset != 'utf-8':
-            text = unicode(text, config.charset).encode('utf-8')
+            text = str(text, config.charset).encode('utf-8')
         return text
 
 

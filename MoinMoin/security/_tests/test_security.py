@@ -363,10 +363,10 @@ class TestPageAcls(object):
                 self.request.cfg.acl_hierarchic = hierarchic
                 can_access = u.may.__getattr__(right)(pagename)
                 if can_access:
-                    print "page %s: %s test if %s may %s (success)" % (
+                    print("page %s: %s test if %s may %s (success)") % (
                         pagename, ['normal', 'hierarchic'][hierarchic], username, right)
                 else:
-                    print "page %s: %s test if %s may %s (failure)" % (
+                    print("page %s: %s test if %s may %s (failure)") % (
                         pagename, ['normal', 'hierarchic'][hierarchic], username, right)
                 assert can_access
 
@@ -378,10 +378,10 @@ class TestPageAcls(object):
                 self.request.cfg.acl_hierarchic = hierarchic
                 can_access = u.may.__getattr__(right)(pagename)
                 if can_access:
-                    print "page %s: %s test if %s may not %s (failure)" % (
+                    print("page %s: %s test if %s may not %s (failure)") % (
                         pagename, ['normal', 'hierarchic'][hierarchic], username, right)
                 else:
-                    print "page %s: %s test if %s may not %s (success)" % (
+                    print("page %s: %s test if %s may not %s (success)") % (
                         pagename, ['normal', 'hierarchic'][hierarchic], username, right)
                 assert not can_access
 

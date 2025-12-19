@@ -116,12 +116,12 @@ class BaseSearchTest(object):
         request = cls.request
         become_trusted(request)
 
-        for page, text in cls.pages.iteritems():
+        for page, text in cls.pages.items():
             if text:
                 create_page(request, page, text)
 
     def teardown_class(self):
-        for page, text in self.pages.iteritems():
+        for page, text in self.pages.items():
             if text:
                 nuke_page(self.request, page)
 
@@ -150,7 +150,7 @@ class BaseSearchTest(object):
             test_result = len(result.hits)
             assert test_result == res_count
 
-        for query, res_count in searches.iteritems():
+        for query, res_count in searches.items():
             yield query, test, query, res_count
 
     def test_title_search_re(self):
@@ -459,7 +459,7 @@ class TestXapianSearch(BaseSearchTest):
             from MoinMoin.search.Xapian.search import XapianSearch
             self.searcher_class = XapianSearch
 
-        except ImportError, error:
+        except ImportError as error:
             if not str(error).startswith('Xapian '):
                 raise
             py.test.skip('xapian is not installed')
@@ -503,7 +503,7 @@ class TestXapianSearch(BaseSearchTest):
             print str(query_)
             assert not query_.empty()
 
-        for prefix, data in prefixes.iteritems():
+        for prefix, data in prefixes.items():
             modifiers, term = data
             for modifier in modifiers:
                 query = ''.join([prefix, modifier, term])

@@ -54,7 +54,7 @@ def _xmlrpc_decorator(function):
                 msg = _("A serious error occurred while processing your request:\n%(error)s")
                 self.log.error(str(err))
                 self.report_error(jid, msg, {'error': str(err)})
-            except Exception, exc:
+            except Exception as exc:
                 msg = _("An internal error has occurred, please contact the administrator.")
                 self.log.critical(str(exc))
                 self.report_error(jid, msg)
@@ -288,7 +288,7 @@ class XMLRPCClient(Thread):
             self.log.error(str(fault))
         except xmlrpclib.Error, err:
             self.log.error(str(err))
-        except Exception, exc:
+        except Exception as exc:
             self.log.critical(str(exc))
 
         command.language = language

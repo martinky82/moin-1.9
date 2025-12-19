@@ -86,7 +86,7 @@ class Formatter(FormatterBase):
         node = self.document.createElement(tag)
         for name, value in attrs.items():
             if value:
-                node.setAttribute(name, unicode(value))
+                node.setAttribute(name, str(value))
         self.position.appendChild(node)
         self.position = node
         return ''
@@ -305,7 +305,7 @@ class Formatter(FormatterBase):
 
     def _check_attrs(self, attrs):
         result = {}
-        for name, value in attrs.iteritems():
+        for name, value in attrs.items():
             result[str(name)] = value
         return result
 

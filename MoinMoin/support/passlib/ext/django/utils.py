@@ -1025,7 +1025,7 @@ class _PasslibHasherWrapper(object):
 ##    @property
 ##    def ident(self):
 ##        # this should always be correct, as django relies on ident prefix.
-##        return unicode(self.django_name + "$")
+##        return str(self.django_name + "$")
 ##
 ##    @property
 ##    def identify(self, hash):

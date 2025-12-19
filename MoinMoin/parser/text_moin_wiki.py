@@ -1383,7 +1383,7 @@ class Parser:
 
     def _replace(self, match):
         """ Same as replace() but with no magic """
-        for name, text in match.groupdict().iteritems():
+        for name, text in match.groupdict().items():
             if text is not None:
                 # Get replace method and replace text
                 replace_func = getattr(self, '_%s_repl' % name)

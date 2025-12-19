@@ -125,7 +125,7 @@ class Collector(object):
                     # old tasks use "Type"
                     types = find_dict_entry("Type", page_contents)
             except (DataNotFoundException, ValueError), e:
-                print >>sys.stderr, "Could not import %r because of %r" % (page, e)
+                print("Could not import %r because of %r" % (page, e), file=sys.stderr)
                 continue
             desc_m = re.search(desc_pattern, page_contents)
             if not desc_m:
@@ -182,10 +182,10 @@ class Collector(object):
 
 
 def pull_and_gencsv():
-    print >> sys.stderr, "Collecting tasks ..."
+    print("Collecting tasks ...", file=sys.stderr)
     tasks = Collector("http://moinmo.in/").collect_tasks()
-    print >> sys.stderr, "Importing %i tasks ..." % (len(tasks), )
-    print >> sys.stderr, "\n".join(repr(task) for task in tasks)
+    print("Importing %i tasks ..." % (len(tasks), ), file=sys.stderr)
+    print("\n".join(repr(task) for task in tasks), file=sys.stderr)
 
     summary_prefix = '' # "[TEST] " # EMPTY FOR PRODUCTION IMPORT!
     tmin, tmax = 0, None

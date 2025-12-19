@@ -98,7 +98,7 @@ General syntax: moin [options] server standalone [standalone-options]
                 if self.options.config_dir:
                     sys.path.insert(0, self.options.config_dir)
                 from wikiserverconfig import Config
-            except ImportError, err:
+            except ImportError as err:
                 if 'wikiserverconfig' in str(err):
                     # we are unable to import from wikiserverconfig module
                     Config = DefaultConfig

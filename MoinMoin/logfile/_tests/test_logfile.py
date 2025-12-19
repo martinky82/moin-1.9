@@ -89,7 +89,7 @@ class TestLogFile(object):
         assert lf.position() == pos
         for data in lf:
             # reads the one new line we added
-            print 'new:', repr(data)
+            print('new:'), repr(data)
             assert data == newdata
         lf.seek(0)
         assert lf.position() == 0

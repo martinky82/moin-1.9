@@ -179,7 +179,7 @@ def execute(pagename, request):
 
         except pg.SaveError, msg:
             # Show the error message
-            request.theme.add_msg(unicode(msg), "error")
+            request.theme.add_msg(str(msg), "error")
             # And show the editor again
             pg.sendEditor(preview=savetext, comment=comment, staytop=1)
             return

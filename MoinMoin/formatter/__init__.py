@@ -43,7 +43,7 @@ class FormatterBase:
     def set_highlight_re(self, hi_re=None):
         """ set the highlighting regular expression (e.g. for search terms)
 
-        @param hi_re: either a valid re as str/unicode (you may want to use
+        @param hi_re: either a valid re as str/str(you may want to use
                       re.escape before passing generic strings!) or a compiled
                       re object. raises re.error for invalid re.
         """
@@ -310,8 +310,8 @@ class FormatterBase:
         # call the macro
         try:
             return macro_obj.execute(name, args)
-        except ImportError, err:
-            errmsg = unicode(err)
+        except ImportError as err:
+            errmsg = str(err)
             if not name in errmsg:
                 raise
             if markup:

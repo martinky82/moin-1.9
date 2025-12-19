@@ -53,5 +53,5 @@ General syntax: moin [options] xmlrpc remote [remote-options]
         # TODO handle stdout, stderr
 
         if result != "OK":
-            print >> sys.stderr, result
+            print(result, file=sys.stderr)
 

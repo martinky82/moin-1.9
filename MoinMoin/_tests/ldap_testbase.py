@@ -64,7 +64,7 @@ def check_environ():
         rc = p.wait()
         if pid and rc == 1:
             slapd = True  # it works
-    except OSError, err:
+    except OSError as err:
         import errno
         if not (err.errno == errno.ENOENT or
                 (err.errno == 3 and os.name == 'nt')):

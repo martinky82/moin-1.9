@@ -256,9 +256,9 @@ else:
     from itertools import imap, izip
 
     def iteritems(d):
-        return d.iteritems()
+        return d.items()
     def itervalues(d):
-        return d.itervalues()
+        return d.values()
 
     def nextgetter(obj):
         return obj.next

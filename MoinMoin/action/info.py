@@ -310,7 +310,7 @@ def execute(pagename, request):
         # print version history
         from MoinMoin.widget.browser import DataBrowserWidget
 
-        request.write(unicode(html.H2().append(_('Revision History'))))
+        request.write(str(html.H2().append(_('Revision History'))))
 
         if not count: # there was no entry in logfile
             request.write(_('No log entries found.'))
@@ -338,7 +338,7 @@ def execute(pagename, request):
                 paging_nav_html,
                 f.div(0)
             ]))
-        request.write(unicode(form))
+        request.write(str(form))
 
     # main function
     _ = request.getText

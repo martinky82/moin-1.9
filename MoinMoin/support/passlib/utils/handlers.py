@@ -308,7 +308,7 @@ def render_mc3(ident, rounds, salt, checksum, sep=u("$"), rounds_base=10):
         rounds = u("%x") % rounds
     else:
         assert rounds_base == 10
-        rounds = unicode(rounds)
+        rounds = str(rounds)
     if checksum:
         parts = [ident, rounds, sep, salt, sep, checksum]
     else:
@@ -341,7 +341,7 @@ def mask_value(value, show=4, pct=0.125, char=u"*"):
             from passlib.utils.binary import ab64_encode
             value = ab64_encode(value).decode("ascii")
         else:
-            value = unicode(value)
+            value = str(value)
     size = len(value)
     show = min(show, int(size * pct))
     return value[:show] + char * (size - show)

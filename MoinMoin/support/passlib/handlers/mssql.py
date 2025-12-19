@@ -13,7 +13,7 @@ Known formats
     no examples found
 
 7.0
-    snefru hash, unicode (what encoding?)
+    snefru hash, str(what encoding?)
     saw ref that these blobs were 16 bytes in size
     no examples found
 

@@ -2,7 +2,7 @@
 """
     MoinMoin - Wiki Utility Functions
 
-    @copyright: 2000 - 2004 by Jürgen Hermann <jh@web.de>
+    @copyright: 2000 - 2004 by Jï¿½rgen Hermann <jh@web.de>
                 2007 by Reimar Bauer
     @license: GNU GPL, see COPYING for details.
 """
@@ -53,14 +53,14 @@ def decodeUnknownInput(text):
         return text
 
     try:
-        return unicode(text, 'utf-8')
+        return str(text, 'utf-8')
     except UnicodeError:
         if config.charset not in ['utf-8', 'iso-8859-1']:
             try:
-                return unicode(text, config.charset)
+                return str(text, config.charset)
             except UnicodeError:
                 pass
-        return unicode(text, 'iso-8859-1', 'replace')
+        return str(text, 'iso-8859-1', 'replace')
 
 
 def decodeUserInput(s, charsets=[config.charset]):
@@ -152,9 +152,9 @@ def parseQueryString(qstr, want_unicode=True):
             v = ''.join(value)
             if want_unicode:
                 try:
-                    v = unicode(v, config.charset)
+                    v = str(v, config.charset)
                 except UnicodeDecodeError:
-                    v = unicode(v, 'iso-8859-1', 'replace')
+                    v = str(v, 'iso-8859-1', 'replace')
             values[key] = v
     return values
 
@@ -1180,7 +1180,7 @@ def parseAttributes(request, attrstring, endtoken=None, extension=None):
     while not msg:
         try:
             key = parser.get_token()
-        except ValueError, err:
+        except ValueError as err:
             msg = str(err)
             break
         if not key: break
@@ -1198,7 +1198,7 @@ def parseAttributes(request, attrstring, endtoken=None, extension=None):
 
         try:
             eq = parser.get_token()
-        except ValueError, err:
+        except ValueError as err:
             msg = str(err)
             break
         if eq != "=":
@@ -1207,7 +1207,7 @@ def parseAttributes(request, attrstring, endtoken=None, extension=None):
 
         try:
             val = parser.get_token()
-        except ValueError, err:
+        except ValueError as err:
             msg = str(err)
             break
         if not val:
@@ -1265,7 +1265,7 @@ class ParameterParser:
             {"name": "John Smith", "age": None, "male": True}
 
         @copyright: 2004 by Florian Festi,
-                    2006 by Mikko Virkkilä
+                    2006 by Mikko Virkkilï¿½
         @license: GNU GPL, see COPYING for details.
     """
 

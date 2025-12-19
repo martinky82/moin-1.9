@@ -66,7 +66,7 @@ def copy_dir(dir_from, dir_to):
     print "%s/ -> %s/" % (dir_from, dir_to)
     try:
         shutil.copytree(dir_from, dir_to)
-    except Exception, err:
+    except Exception as err:
         error("can't copy '%s' to '%s' (%s)" % (dir_from, dir_to, str(err)))
 
 

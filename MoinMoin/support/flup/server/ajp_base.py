@@ -170,7 +170,7 @@ def decodeString(data, pos=0):
             return '', pos
         s = data[pos:pos+length]
         return s, pos+length+1 # Don't forget NUL
-    except Exception, e:
+    except Exception as e:
         raise ProtocolError, 'decodeString: '+str(e)
 
 def decodeRequestHeader(data, pos=0):
@@ -187,7 +187,7 @@ def decodeRequestHeader(data, pos=0):
             name, pos = decodeString(data, pos)
         value, pos = decodeString(data, pos)
         return name, value, pos
-    except Exception, e:
+    except Exception as e:
         raise ProtocolError, 'decodeRequestHeader: '+str(e)
 
 def decodeAttribute(data, pos=0):
@@ -213,7 +213,7 @@ def decodeAttribute(data, pos=0):
                 raise ValueError, 'bad attribute code'
         value, pos = decodeString(data, pos)
         return name, value, pos
-    except Exception, e:
+    except Exception as e:
         raise ProtocolError, 'decodeAttribute: '+str(e)
 
 def encodeString(s):
@@ -626,7 +626,7 @@ class Connection(object):
         while True:
             try:
                 self.processInput()
-            except ProtocolError, e:
+            except ProtocolError as e:
                 self.logger.error("Protocol error '%s'", str(e))
                 break
             except (EOFError, KeyboardInterrupt):

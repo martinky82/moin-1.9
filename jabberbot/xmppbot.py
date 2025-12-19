@@ -104,7 +104,7 @@ class Contact:
         max_prio = -129
         selected = None
 
-        for resource in self.resources.itervalues():
+        for resource in self.resources.values():
             # TODO: check RFC for behaviour of 2 resources with the same priority
             if resource['priority'] > max_prio:
                 max_prio = resource['priority']
@@ -1649,7 +1649,7 @@ The call should look like:\n\n%(command)s %(params)s")
 
             for no, result in enumerate(results):
                 field_name = "url%d" % (no, )
-                form.add_field(name=field_name, value=unicode(result["url"]), label=result["description"].encode("utf-8"), field_type="text-single")
+                form.add_field(name=field_name, value=str(result["url"]), label=result["description"].encode("utf-8"), field_type="text-single")
 
             # Selection of a following action
             form.add_field(name="options", field_type="list-single", options=[do_nothing, search_again], label=action_label)

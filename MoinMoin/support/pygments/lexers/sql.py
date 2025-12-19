@@ -141,7 +141,7 @@ class PostgresBase(object):
                 pass
         else:
             # TODO: better logging
-            # print >>sys.stderr, "language not found:", lang
+            # print("language not found:", lang, file=sys.stderr)
             return None
 
 

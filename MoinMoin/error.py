@@ -25,7 +25,7 @@ class Error(Exception):
     config.charset encoding. On output, the class will convert the string
     to unicode or the unicode to string, using config.charset.
 
-    When you want to render an error, use unicode() or str() as needed.
+    When you want to render an error, use str() or str() as needed.
     """
 
     def __init__(self, message):
@@ -39,9 +39,9 @@ class Error(Exception):
     def __unicode__(self):
         """ Return unicode error message """
         if isinstance(self.message, str):
-            return unicode(self.message, config.charset)
+            return str(self.message, config.charset)
         else:
-            return unicode(self.message)
+            return str(self.message)
 
     def __str__(self):
         """ Return encoded message """

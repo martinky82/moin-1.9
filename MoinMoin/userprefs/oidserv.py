@@ -110,4 +110,4 @@ class Settings(UserPrefBase):
         label = _("Cancel")
         form.append(html.INPUT(type="submit", name='cancel', value=label))
         self._make_row('', [form])
-        return unicode(ret)
+        return str(ret)

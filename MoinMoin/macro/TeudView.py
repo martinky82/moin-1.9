@@ -15,11 +15,11 @@
 _imperr = None
 try:
     from teud import xmldoc, pydoc
-except ImportError, _imperr:
+except ImportError as _imperr:
     pass
 try:
     from xml.xslt.Processor import Processor
-except ImportError, _imperr:
+except ImportError as _imperr:
     pass
 
 from MoinMoin import config, wikiutil

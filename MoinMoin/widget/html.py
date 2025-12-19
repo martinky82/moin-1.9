@@ -119,7 +119,7 @@ class CompositeElement(Element):
     def __unicode__(self):
         childout = []
         for c in self.children:
-            co = unicode(c)
+            co = str(c)
             childout.append(co)
         return "<%s>%s</%s>" % (
             self._openingtag(),

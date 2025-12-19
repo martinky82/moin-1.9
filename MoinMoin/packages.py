@@ -31,9 +31,9 @@ class ScriptException(Exception):
     def __unicode__(self):
         """ Return unicode error message """
         if isinstance(self.args[0], str):
-            return unicode(self.args[0], config.charset)
+            return str(self.args[0], config.charset)
         else:
-            return unicode(self.args[0])
+            return str(self.args[0])
 
 class RuntimeScriptException(ScriptException):
     """ Raised when the script problem occurs at runtime. """
@@ -446,13 +446,13 @@ class ScriptEngine:
                 fn(*elements[1:])
             except ScriptExit:
                 break
-            except TypeError, e:
-                self.msg += u"Exception %s (line %i): %s\n" % (e.__class__.__name__, lineno, unicode(e))
+            except TypeError as e:
+                self.msg += u"Exception %s (line %i): %s\n" % (e.__class__.__name__, lineno, str(e))
                 success = False
                 break
-            except RuntimeScriptException, e:
+            except RuntimeScriptException as e:
                 if not self.ignoreExceptions:
-                    self.msg += u"Exception %s (line %i): %s\n" % (e.__class__.__name__, lineno, unicode(e))
+                    self.msg += u"Exception %s (line %i): %s\n" % (e.__class__.__name__, lineno, str(e))
                     success = False
                     break
 
@@ -530,7 +530,7 @@ class ZipPackage(Package, ScriptEngine):
 def main():
     args = sys.argv
     if len(args)-1 not in (2, 3) or args[1] not in ('l', 'i'):
-        print >> sys.stderr, """MoinMoin Package Installer v%(version)i
+        print("""MoinMoin Package Installer v%(version)i, file=sys.stderr)
 
 %(myname)s action packagefile [request URL]
 

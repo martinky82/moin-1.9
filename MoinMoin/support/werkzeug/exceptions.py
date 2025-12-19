@@ -48,9 +48,9 @@
             request = BaseRequest(environ)
             try:
                 return view(request)
-            except NotFound, e:
+            except NotFound as e:
                 return not_found(request)
-            except HTTPException, e:
+            except HTTPException as e:
                 return e
 
 

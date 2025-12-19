@@ -407,4 +407,4 @@ space between words. Group page name is not allowed.""", wiki=True) % wikiutil.e
                 ])
         self.make_row('', button_cell)
 
-        return unicode(self._form)
+        return str(self._form)

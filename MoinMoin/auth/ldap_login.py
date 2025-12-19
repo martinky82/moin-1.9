@@ -22,7 +22,7 @@ logging = log.getLogger(__name__)
 
 try:
     import ldap
-except ImportError, err:
+except ImportError as err:
     logging.error("You need to have python-ldap installed (%s)." % str(err))
     raise
 

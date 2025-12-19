@@ -229,7 +229,7 @@ class Connection(object):
             self.processInput()
         except (EOFError, KeyboardInterrupt):
             pass
-        except ProtocolError, e:
+        except ProtocolError as e:
             self.logger.error("Protocol error '%s'", str(e))
         except:
             self.logger.exception('Exception caught in Connection')

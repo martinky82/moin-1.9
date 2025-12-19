@@ -153,7 +153,7 @@ class Settings(UserPrefBase):
                   " to contact you in the general preferences."))])
             self.make_row('', [
                 html.INPUT(type="submit", name="cancel", value=_("Cancel"))])
-            return unicode(self._form)
+            return str(self._form)
 
         self.make_row(_('Subscribed events'), [self._event_select()])
 
@@ -175,7 +175,7 @@ class Settings(UserPrefBase):
             ' ',
             html.INPUT(type="submit", name="cancel", value=_("Cancel"))])
 
-        return unicode(self._form)
+        return str(self._form)
 
     def allowed(self):
         return UserPrefBase.allowed(self) and (

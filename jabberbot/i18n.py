@@ -57,7 +57,7 @@ def request_translations(config):
         log.error("XML RPC fault occurred while getting translations: %s" % (str(fault), ))
     except xmlrpclib.Error, error:
         log.error("XML RPC error occurred while getting translations: %s" % (str(error), ))
-    except Exception, exc:
+    except Exception as exc:
         log.error("Unexpected exception occurred while getting translations: %s" % (str(exc), ))
 
     log.error("Translations could not be downloaded, is wiki is accesible?")

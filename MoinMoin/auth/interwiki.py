@@ -65,7 +65,7 @@ class InterwikiAuth(BaseAuth):
 
         # TODO: check remote auth_attribs
         u = user.User(request, name=name, auth_method=self.name, auth_attribs=('name', 'aliasname', 'password', 'email', ))
-        for key, value in account_data.iteritems():
+        for key, value in account_data.items():
             if key not in request.cfg.user_transient_fields:
                 setattr(u, key, value)
         u.valid = True

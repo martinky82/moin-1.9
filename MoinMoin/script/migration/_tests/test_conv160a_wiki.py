@@ -119,7 +119,7 @@ class TestWikiConversion:
             # macros
             ('[[BR]]', {}, '<<BR>>'),
             ('[[FullSearch(wtf)]]', {}, '<<FullSearch(wtf)>>'),
-            (u'[[ImageLink(töst.png)]]', {}, u'[[attachment:töst.png|{{attachment:töst.png}}]]'),
+            (u'[[ImageLink(tï¿½st.png)]]', {}, u'[[attachment:tï¿½st.png|{{attachment:tï¿½st.png}}]]'),
             ('[[ImageLink(test.png,OtherPage)]]', {}, '[[OtherPage|{{attachment:test.png}}]]'),
             ('[[ImageLink(test.png,OtherPage,width=123,height=456)]]', {}, '[[OtherPage|{{attachment:test.png||width=123, height=456}}]]'),
             ('[[ImageLink(test.png,OtherPage,width=123,height=456,alt=alttext)]]', {}, '[[OtherPage|{{attachment:test.png|alttext|width=123, height=456}}]]'),
@@ -421,7 +421,7 @@ class TestWikiConversion:
 
 """
         markup_160 = convert_wiki(self.request, u'TestPage', markup_160a, {})
-        #print markup_160a ; print "---" ; print markup_160
+        #print markup_160a ; print("---") ; print markup_160
         markup_160 = markup_160.replace('\r\n', '\n')
         assert markup_160 == expected_markup_160
 
@@ -439,7 +439,7 @@ class TestWikiConversion:
 
 """
         markup_160 = convert_wiki(self.request, u'TestPage', markup_160a, {})
-        #print markup_160a ; print "---" ; print markup_160
+        #print markup_160a ; print("---") ; print markup_160
         markup_160 = markup_160.replace('\r\n', '\n')
         assert markup_160 == expected_markup_160
 
@@ -457,7 +457,7 @@ class TestWikiConversion:
 
 """
         markup_160 = convert_wiki(self.request, u'TestPage', markup_160a, {})
-        #print markup_160a ; print "---" ; print markup_160
+        #print markup_160a ; print("---") ; print markup_160
         markup_160 = markup_160.replace('\r\n', '\n')
         assert markup_160 == expected_markup_160
 

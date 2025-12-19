@@ -129,7 +129,7 @@ class ReplayLog(object):
         if classname is not None:
             return True
         # Check for subclasses of xapian classes.
-        for classobj, classname in self._xapian_classes.iteritems():
+        for classobj, classname in self._xapian_classes.items():
             if isinstance(obj, classobj):
                 return True
         # Not a xapian class or subclass.
@@ -147,7 +147,7 @@ class ReplayLog(object):
             if classname is not None:
                 return classname
 
-            for classobj, classname in self._xapian_classes.iteritems():
+            for classobj, classname in self._xapian_classes.items():
                 if issubclass(obj, classobj):
                     return "subclassof_%s" % (classname, )
 
@@ -175,7 +175,7 @@ class ReplayLog(object):
         # Check if it's a subclass of a xapian class.  Note: this will only
         # pick up subclasses, because the original classes are filtered out
         # higher up.
-        for classobj, classname in self._xapian_classes.iteritems():
+        for classobj, classname in self._xapian_classes.items():
             if isinstance(obj, classobj):
                 objnum = self._get_obj_num(obj, maybe_new=maybe_new)
                 return "subclassof_%s#%d" % (classname, objnum)

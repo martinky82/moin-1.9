@@ -97,8 +97,7 @@ class _bcrypt_test(HandlerCase):
         # custom test vectors
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE,
+        # ensures utf-8 used for str(UPASS_TABLE,
                 '$2a$05$Z17AXnnlpzddNUvnC6cZNOSwMA/8oNiKnHTHTwLlBijfucQQlHjaG'),
 
         # ensure 2b support

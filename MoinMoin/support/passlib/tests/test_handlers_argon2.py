@@ -159,8 +159,7 @@ class _base_argon2_test(HandlerCase):
         # sample w/ all parameters different
         ("password", '$argon2i$v=19$m=380,t=2,p=2$c29tZXNhbHQ$SrssP8n7m/12VWPM8dvNrw'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '$argon2i$v=19$m=512,t=2,p=2$1sV0O4PWLtc12Ypv1f7oGw$'
+        # ensures utf-8 used for str(UPASS_TABLE, '$argon2i$v=19$m=512,t=2,p=2$1sV0O4PWLtc12Ypv1f7oGw$'
                       'z+yqzlKtrq3SaNfXDfIDnQ'),
         (PASS_TABLE_UTF8, '$argon2i$v=19$m=512,t=2,p=2$1sV0O4PWLtc12Ypv1f7oGw$'
                           'z+yqzlKtrq3SaNfXDfIDnQ'),

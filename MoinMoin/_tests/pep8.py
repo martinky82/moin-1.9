@@ -495,8 +495,8 @@ def expand_indent(line):
 
 def message(text):
     """Print a message."""
-    # print >> sys.stderr, options.prog + ': ' + text
-    # print >> sys.stderr, text
+    # print(options.prog + ': ' + text, file=sys.stderr)
+    # print(text, file=sys.stderr)
     print text
 
 
@@ -507,7 +507,7 @@ def find_checks(argument_name):
     """
     checks = []
     function_type = type(find_checks)
-    for name, function in globals().iteritems():
+    for name, function in globals().items():
         if type(function) is function_type:
             args = inspect.getargspec(function)[0]
             if len(args) >= 1 and args[0].startswith(argument_name):
@@ -645,7 +645,7 @@ class Checker:
             print self.logical_line[:80].rstrip()
         for name, check, argument_names in self.logical_checks:
             if options.verbose >= 3:
-                print '   ', name
+                print('   '), name
             result = self.run_check(check, argument_names)
             if result is not None:
                 offset, text = result
@@ -829,12 +829,12 @@ def print_benchmark(elapsed):
     """
     Print benchmark numbers.
     """
-    print '%-7.2f %s' % (elapsed, 'seconds elapsed')
+    print('%-7.2f %s') % (elapsed, 'seconds elapsed')
     keys = ['directories', 'files',
             'logical lines', 'physical lines']
     for key in keys:
         if key in options.counters:
-            print '%-7d %s per second (%d total)' % (
+            print('%-7d %s per second (%d total)') % (
                 options.counters[key] / elapsed, key,
                 options.counters[key])
 

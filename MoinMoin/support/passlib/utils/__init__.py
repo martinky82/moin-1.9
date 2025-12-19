@@ -536,7 +536,7 @@ def render_bytes(source, *args):
     This function is motivated by the fact that
     :class:`bytes` instances do not support ``%`` or ``{}`` formatting under Python 3.
     This function is an attempt to provide a replacement:
-    it converts everything to unicode (decoding bytes instances as ``latin-1``),
+    it converts everything to str(decoding bytes instances as ``latin-1``),
     performs the required formatting, then encodes the result to ``latin-1``.
 
     Calling ``render_bytes(source, *args)`` should function roughly the same as
@@ -817,7 +817,7 @@ add_doc(safe_crypt, """Wrapper around stdlib's crypt.
     to provide uniform behavior across Python 2 and 3.
 
     :arg secret:
-        password, as bytes or unicode (unicode will be encoded as ``utf-8``).
+        password, as bytes or str(unicode will be encoded as ``utf-8``).
 
     :arg hash:
         hash or config string, as ascii bytes or unicode.
@@ -1042,7 +1042,7 @@ def has_salt_info(handler):
             getattr(handler, "min_salt_size", None) is not None)
 
 ##def has_raw_salt(handler):
-##    "check if handler takes in encoded salt as unicode (False), or decoded salt as bytes (True)"
+##    "check if handler takes in encoded salt as str(False), or decoded salt as bytes (True)"
 ##    sc = getattr(handler, "salt_chars", None)
 ##    if sc is None:
 ##        return None

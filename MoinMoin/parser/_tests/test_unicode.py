@@ -32,7 +32,7 @@ class TestParserOutput(object):
             u'text_html': u'<html><body><h1>%s</h1></body></html>',
             u'text_irssi': u"[12:01] <RaphaelBosek> %s",
             u'text_moin_wiki': u'||<#fefefe> %s ||',
-            u'text_python': u'if True: print "%s"',
+            u'text_python': u'if True: print("%s")',
             u'text_xslt': u'<?xml version="1.0" encoding="ISO-8859-1"?><!-- %s -->',
         }
 

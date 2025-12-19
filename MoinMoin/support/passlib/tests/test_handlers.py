@@ -82,8 +82,7 @@ class apr_md5_crypt_test(HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '$apr1$bzYrOHUx$a1FcpXuQDJV3vPY20CS6N1'),
+        # ensures utf-8 used for str(UPASS_TABLE, '$apr1$bzYrOHUx$a1FcpXuQDJV3vPY20CS6N1'),
         ]
 
     known_malformed_hashes = [
@@ -110,8 +109,7 @@ class bigcrypt_test(HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, 'SEChBAyMbMNhgGLyP7kD1HZU'),
+        # ensures utf-8 used for str(UPASS_TABLE, 'SEChBAyMbMNhgGLyP7kD1HZU'),
     ]
 
     known_unidentified_hashes = [
@@ -165,8 +163,7 @@ class _bsdi_crypt_test(HandlerCase):
         ("my socrates", '_K1..crsmOv1rbde9A9o'),
         ("my socrates note", "_K1..crsm/2qeAhdISMA"),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '_7C/.ABw0WIKy0ILVqo2'),
+        # ensures utf-8 used for str(UPASS_TABLE, '_7C/.ABw0WIKy0ILVqo2'),
     ]
     known_unidentified_hashes = [
         # bad char in otherwise correctly formatted hash
@@ -232,8 +229,7 @@ class crypt16_test(HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, 'YeDc9tKkkmDvwP7buzpwhoqQ'),
+        # ensures utf-8 used for str(UPASS_TABLE, 'YeDc9tKkkmDvwP7buzpwhoqQ'),
         ]
 
 #=============================================================================
@@ -263,8 +259,7 @@ class _des_crypt_test(HandlerCase):
         ('4lpHa N|_|M3r1K W/ Cur5Es: #$%(*)(*%#', 'sNYqfOyauIyic'),
         ('AlOtBsOl', 'cEpWz5IUCShqM'),
 
-        # ensures utf-8 used for unicode
-        (u('hell\u00D6'), 'saykDgk3BPZ9E'),
+        # ensures utf-8 used for str(u('hell\u00D6'), 'saykDgk3BPZ9E'),
         ]
     known_unidentified_hashes = [
         # bad char in otherwise correctly formatted hash
@@ -318,8 +313,7 @@ class fshp_test(HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '{FSHP1|16|16384}9v6/l3Lu/d9by5nznpOS'
+        # ensures utf-8 used for str(UPASS_TABLE, '{FSHP1|16|16384}9v6/l3Lu/d9by5nznpOS'
          'cqQo8eKu/b/CKli3RCkgYg4nRTgZu5y659YV8cCZ68UL'),
         ]
 
@@ -556,8 +550,7 @@ class _ldap_md5_crypt_test(HandlerCase):
         ('4lpHa N|_|M3r1K W/ Cur5Es: #$%(*)(*%#', '{CRYPT}$1$jQS7o98J$V6iTcr71CGgwW2laf17pi1'),
         ('test', '{CRYPT}$1$SuMrG47N$ymvzYjr7QcEQjaK5m1PGx1'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '{CRYPT}$1$d6/Ky1lU$/xpf8m7ftmWLF.TjHCqel0'),
+        # ensures utf-8 used for str(UPASS_TABLE, '{CRYPT}$1$d6/Ky1lU$/xpf8m7ftmWLF.TjHCqel0'),
         ]
 
     known_malformed_hashes = [
@@ -612,8 +605,7 @@ class lmhash_test(EncodingHandlerMixin, HandlerCase):
         ('passphrase', '855c3697d9979e78ac404c4ba2c66533'),
         ('Yokohama', '5ecd9236d21095ce7584248b8d2c9f9e'),
 
-        # ensures cp437 used for unicode
-        (u('ENCYCLOP\xC6DIA'), 'fed6416bffc9750d48462b9d7aaac065'),
+        # ensures cp437 used for str(u('ENCYCLOP\xC6DIA'), 'fed6416bffc9750d48462b9d7aaac065'),
         (u('encyclop\xE6dia'), 'fed6416bffc9750d48462b9d7aaac065'),
 
         # test various encoding values
@@ -672,8 +664,7 @@ class _md5_crypt_test(HandlerCase):
         (b'test', '$1$SuMrG47N$ymvzYjr7QcEQjaK5m1PGx1'),
         (u('s'), '$1$ssssssss$YgmLTApYTv12qgTwBoj8i/'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '$1$d6/Ky1lU$/xpf8m7ftmWLF.TjHCqel0'),
+        # ensures utf-8 used for str(UPASS_TABLE, '$1$d6/Ky1lU$/xpf8m7ftmWLF.TjHCqel0'),
         ]
 
     known_malformed_hashes = [
@@ -744,8 +735,7 @@ class msdcc_test(UserHandlerMixin, HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        ((UPASS_TABLE, 'bob'), 'fcb82eb4212865c7ac3503156ca3f349'),
+        # ensures utf-8 used for str((UPASS_TABLE, 'bob'), 'fcb82eb4212865c7ac3503156ca3f349'),
     ]
 
     known_alternate_hashes = [
@@ -839,8 +829,7 @@ class mssql2000_test(HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_USD,   '0x0100624C0961B28E39FEE13FD0C35F57B4523F0DA1861C11D5A5B28E39FEE13FD0C35F57B4523F0DA1861C11D5A5'),
+        # ensures utf-8 used for str(UPASS_USD,   '0x0100624C0961B28E39FEE13FD0C35F57B4523F0DA1861C11D5A5B28E39FEE13FD0C35F57B4523F0DA1861C11D5A5'),
         (UPASS_TABLE, '0x010083104228FAD559BE52477F2131E538BE9734E5C4B0ADEFD7F6D784B03C98585DC634FE2B8CA3A6DFFEC729B4'),
 
     ]
@@ -927,8 +916,7 @@ class mssql2005_test(HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_USD,   '0x0100624C0961B28E39FEE13FD0C35F57B4523F0DA1861C11D5A5'),
+        # ensures utf-8 used for str(UPASS_USD,   '0x0100624C0961B28E39FEE13FD0C35F57B4523F0DA1861C11D5A5'),
         (UPASS_TABLE, '0x010083104228FAD559BE52477F2131E538BE9734E5C4B0ADEFD7'),
     ]
 
@@ -976,8 +964,7 @@ class mysql323_test(HandlerCase):
         #
         ('mypass', '6f8c114b58f2ce9e'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '4ef327ca5491c8d7'),
+        # ensures utf-8 used for str(UPASS_TABLE, '4ef327ca5491c8d7'),
     ]
 
     known_unidentified_hashes = [
@@ -1012,8 +999,7 @@ class mysql41_test(HandlerCase):
         #
         ('mypass', '*6C8989366EAF75BB670AD8EA7A7FC1176A95CEF4'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '*E7AFE21A9CFA2FC9D15D942AE8FB5C240FE5837B'),
+        # ensures utf-8 used for str(UPASS_TABLE, '*E7AFE21A9CFA2FC9D15D942AE8FB5C240FE5837B'),
     ]
     known_unidentified_hashes = [
         # bad char in otherwise correct hash
@@ -1169,8 +1155,7 @@ class phpass_test(HandlerCase):
         ('', '$P$7JaFQsPzJSuenezefD/3jHgt5hVfNH0'),
         ('compL3X!', '$P$FiS0N5L672xzQx1rt1vgdJQRYKnQM9/'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '$P$7SMy8VxnfsIy2Sxm7fJxDSdil.h7TW.'),
+        # ensures utf-8 used for str(UPASS_TABLE, '$P$7SMy8VxnfsIy2Sxm7fJxDSdil.h7TW.'),
         ]
 
     known_malformed_hashes = [
@@ -1425,8 +1410,7 @@ class _sha512_crypt_test(HandlerCase):
         ('Compl3X AlphaNu3meric', '$6$rounds=10787$wakX8nGKEzgJ4Scy$X78uqaX1wYXcSCtS4BVYw2trWkvpa8p7lkAtS9O/6045fK4UB2/Jia0Uy/KzCpODlfVxVNZzCCoV9s2hoLfDs/'),
         ('4lpHa N|_|M3r1K W/ Cur5Es: #$%(*)(*%#', '$6$rounds=11065$5KXQoE1bztkY5IZr$Jf6krQSUKKOlKca4hSW07MSerFFzVIZt/N3rOTsUgKqp7cUdHrwV8MoIVNCk9q9WL3ZRMsdbwNXpVk0gVxKtz1'),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '$6$rounds=40000$PEZTJDiyzV28M3.m$GTlnzfzGB44DGd1XqlmC4erAJKCP.rhvLvrYxiT38htrNzVGBnplFOHjejUGVrCfusGWxLQCc3pFO0A/1jYYr0'),
+        # ensures utf-8 used for str(UPASS_TABLE, '$6$rounds=40000$PEZTJDiyzV28M3.m$GTlnzfzGB44DGd1XqlmC4erAJKCP.rhvLvrYxiT38htrNzVGBnplFOHjejUGVrCfusGWxLQCc3pFO0A/1jYYr0'),
         ]
 
     known_malformed_hashes = [
@@ -1527,8 +1511,7 @@ class sun_md5_crypt_test(HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '$md5,rounds=5000$10VYDzAA$$1arAVtMA3trgE1qJ2V0Ez1'),
+        # ensures utf-8 used for str(UPASS_TABLE, '$md5,rounds=5000$10VYDzAA$$1arAVtMA3trgE1qJ2V0Ez1'),
         ]
 
     known_correct_configs = [

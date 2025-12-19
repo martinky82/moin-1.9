@@ -243,7 +243,7 @@ class PreforkServer(object):
                 # Child is unavailable. SIGINT it.
                 try:
                     os.kill(pid, signal.SIGINT)
-                except OSError, e:
+                except OSError as e:
                     if e[0] != errno.ESRCH:
                         raise
 
@@ -259,7 +259,7 @@ class PreforkServer(object):
         while len(self._children):
             try:
                 pid, status = os.wait()
-            except OSError, e:
+            except OSError as e:
                 if e[0] in (errno.ECHILD, errno.EINTR):
                     break
             if self._children.has_key(pid):
@@ -272,7 +272,7 @@ class PreforkServer(object):
         for pid in self._children.keys():
             try:
                 os.kill(pid, signal.SIGKILL)
-            except OSError, e:
+            except OSError as e:
                 if e[0] != errno.ESRCH:
                     raise
 
@@ -281,7 +281,7 @@ class PreforkServer(object):
         while True:
             try:
                 pid, status = os.waitpid(-1, os.WNOHANG)
-            except OSError, e:
+            except OSError as e:
                 if e[0] == errno.ECHILD:
                     break
                 raise
@@ -306,7 +306,7 @@ class PreforkServer(object):
         setCloseOnExec(child)
         try:
             pid = os.fork()
-        except OSError, e:
+        except OSError as e:
             if e[0] in (errno.EAGAIN, errno.ENOMEM):
                 return False # Can't fork anymore.
             raise

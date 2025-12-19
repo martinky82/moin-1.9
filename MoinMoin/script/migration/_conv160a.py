@@ -91,11 +91,11 @@ class EventLog:
                     timestamp = int(timestamp)
                     kvdict = wikiutil.parseQueryString(kvpairs)
                     data.append((timestamp, action, kvdict))
-                except ValueError, err:
+                except ValueError as err:
                     # corrupt event log line, log error and skip it
                     print "Error: invalid event log (%s) line %d, err: %s, SKIPPING THIS LINE!" % (self.fname, lineno, str(err))
             f.close()
-        except IOError, err:
+        except IOError as err:
             # no event-log
             pass
         self.data = data
@@ -144,14 +144,14 @@ class EditLog:
                 try:
                     timestamp = int(timestamp)
                     rev = int(rev)
-                except ValueError, err:
+                except ValueError as err:
                     print "Error: %r has a damaged timestamp or revision number in log line %d [%s] - skipping this entry" % (
                         self.fname, lineno, str(err))
                     continue # ignore this line, do not terminate - to find all those errors in one go
                 pagename = wikiutil.unquoteWikiname(pagename)
                 data[(timestamp, rev, pagename)] = (timestamp, rev, action, pagename, ip, hostname, userid, extra, comment)
             f.close()
-        except IOError, err:
+        except IOError as err:
             # no edit-log
             pass
         self.data = data
@@ -384,7 +384,7 @@ class User:
                 continue
             try:
                 key, value = line.split(u'=', 1)
-            except Exception, err:
+            except Exception as err:
                 print "Error: User reader can not parse line %r from profile %r (%s)" % (line, fname, str(err))
                 continue
             self.profile[key] = value

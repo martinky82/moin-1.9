@@ -60,7 +60,7 @@ def handle_jid_changed(event):
             server.removeJIDFromRoster(secret, event.jid)
     except xmlrpclib.Error, err:
         logging.error("XML RPC error: %s" % str(err))
-    except Exception, err:
+    except Exception as err:
         logging.error("Low-level communication error: %s" % str(err))
 
 
@@ -203,6 +203,6 @@ def send_notification(request, jids, notification):
         return True
     except xmlrpclib.Error, err:
         logging.error("XML RPC error: %s" % str(err))
-    except Exception, err:
+    except Exception as err:
         logging.error("Low-level communication error: %s" % str(err))
 

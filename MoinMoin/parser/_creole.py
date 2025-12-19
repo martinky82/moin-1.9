@@ -388,7 +388,7 @@ class Parser:
         """Invoke appropriate _*_repl method. Called for every matched group."""
 
         groups = match.groupdict()
-        for name, text in groups.iteritems():
+        for name, text in groups.items():
             if text is not None:
                 replace = getattr(self, '_%s_repl' % name)
                 replace(groups)

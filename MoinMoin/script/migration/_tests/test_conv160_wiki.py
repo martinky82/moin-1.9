@@ -177,7 +177,7 @@ class TestWikiConversion:
 
 """
         markup_160 = convert_wiki(self.request, u'TestPage', markup_15, {})
-        #print markup_15 ; print "---" ; print markup_160
+        #print markup_15 ; print("---") ; print markup_160
         markup_160 = markup_160.replace('\r\n', '\n')
         assert markup_160 == expected_markup_160
 
@@ -197,7 +197,7 @@ class TestWikiConversion:
 
 """
         markup_160 = convert_wiki(self.request, u'TestPage', markup_15, {})
-        #print markup_15 ; print "---" ; print markup_160
+        #print markup_15 ; print("---") ; print markup_160
         markup_160 = markup_160.replace('\r\n', '\n')
         assert markup_160 == expected_markup_160
 

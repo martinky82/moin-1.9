@@ -21,7 +21,7 @@ _transdict = {"AT": "@", "DOT": ".", "DASH": "-"}
 def encodeAddress(address, charset):
     """ Encode email address to enable non ascii names
 
-    e.g. '"Jürgen Hermann" <jh@web.de>'. According to the RFC, the name
+    e.g. '"Jï¿½rgen Hermann" <jh@web.de>'. According to the RFC, the name
     part should be encoded, the address should not.
 
     @param address: email address, possibly using '"name" <address>' format
@@ -106,7 +106,7 @@ def sendmail(request, to, subject, text, mail_from=None):
 
     # Create message headers
     # Don't expose emails addreses of the other subscribers, instead we
-    # use the same mail_from, e.g. u"Jürgen Wiki <noreply@mywiki.org>"
+    # use the same mail_from, e.g. u"Jï¿½rgen Wiki <noreply@mywiki.org>"
     address = encodeAddress(mail_from, charset)
     msg['From'] = address
     msg['To'] = address
@@ -149,7 +149,7 @@ def sendmail(request, to, subject, text, mail_from=None):
                 except AttributeError:
                     # in case the connection failed, SMTP has no "sock" attribute
                     pass
-        except UnicodeError, e:
+        except UnicodeError as e:
             logging.exception("unicode error [%r -> %r]" % (mail_from, to, ))
             return (0, str(e))
         except smtplib.SMTPException, e:

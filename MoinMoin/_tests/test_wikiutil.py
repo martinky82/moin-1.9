@@ -24,7 +24,7 @@ class TestQueryStringSupport:
     def testParseQueryString(self):
         for qstr, expected_str, expected_unicode in self.tests:
             assert wikiutil.parseQueryString(qstr) == MultiDict(expected_unicode)
-            assert wikiutil.parseQueryString(unicode(qstr)) == MultiDict(expected_unicode)
+            assert wikiutil.parseQueryString(str(qstr)) == MultiDict(expected_unicode)
 
     def testMakeQueryString(self):
         for qstr, in_str, in_unicode in self.tests:

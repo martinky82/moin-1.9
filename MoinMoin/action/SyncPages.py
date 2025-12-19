@@ -211,13 +211,13 @@ class ActionClass(object):
 
             if not remote.valid:
                 raise ActionStatus(_("The ''remoteWiki'' is unknown.", wiki=True), "error")
-        except ActionStatus, e:
+        except ActionStatus as e:
             self.request.theme.add_msg(*e.args)
         else:
             try:
                 try:
                     self.sync(params, local, remote)
-                except Exception, e:
+                except Exception as e:
                     temp_file = StringIO.StringIO()
                     traceback.print_exc(file=temp_file)
                     self.log_status(self.ERROR, _("A severe error occurred:"), raw_suffix=temp_file.getvalue())

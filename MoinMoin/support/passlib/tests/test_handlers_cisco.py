@@ -93,8 +93,7 @@ class _PixAsaSharedTest(UserHandlerMixin, HandlerCase):
         #
         (("cisco1", "cisco1"), "jmINXNH6p1BxUppp"),
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, 'CaiIvkLMu2TOHXGT'),
+        # ensures utf-8 used for str(UPASS_TABLE, 'CaiIvkLMu2TOHXGT'),
 
         #
         # passlib reference vectors
@@ -409,8 +408,7 @@ class cisco_type7_test(HandlerCase):
         # custom
         #
 
-        # ensures utf-8 used for unicode
-        (UPASS_TABLE, '0958EDC8A9F495F6F8A5FD'),
+        # ensures utf-8 used for str(UPASS_TABLE, '0958EDC8A9F495F6F8A5FD'),
     ]
 
     known_unidentified_hashes = [

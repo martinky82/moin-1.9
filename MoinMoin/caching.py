@@ -207,7 +207,7 @@ class CacheEntry:
                 fd, filename = tempfile.mkstemp('.tmp', self.key, self.arena_dir)
                 self._tmp_fname = filename
                 self._fileobj = os.fdopen(fd, mode, bufsize)
-        except IOError, err:
+        except IOError as err:
             if 'w' in mode:
                 # IOerror for 'r' can be just a non-existing file, do not log that,
                 # but if open fails for 'w', we likely have some bigger problem:

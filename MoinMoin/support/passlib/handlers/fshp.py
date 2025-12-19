@@ -92,7 +92,7 @@ class fshp(uh.HasRounds, uh.HasRawSalt, uh.HasRawChecksum, uh.GenericHandler):
         3: ("sha512",   64),
         }
     _variant_aliases = dict(
-        [(unicode(k),k) for k in _variant_info] +
+        [(str(k),k) for k in _variant_info] +
         [(v[0],k) for k,v in iteritems(_variant_info)]
         )
 

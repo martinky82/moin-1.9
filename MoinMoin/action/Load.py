@@ -71,7 +71,7 @@ class Load(ActionBase):
             except pg.EditConflict, e:
                 msg = e.message
             except pg.SaveError, msg:
-                msg = unicode(msg)
+                msg = str(msg)
         else:
             msg = _("Pagename not specified!")
         return status, msg

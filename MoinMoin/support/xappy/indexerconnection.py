@@ -431,7 +431,7 @@ class IndexerConnection(object):
         """
         if self._index is None:
             raise errors.IndexerError("IndexerConnection has been closed")
-        return [k for k, v in self._facet_hierarchy.iteritems() if v == facet] 
+        return [k for k, v in self._facet_hierarchy.items() if v == facet] 
 
     FacetQueryType_Preferred = 1;
     FacetQueryType_Never = 2;
@@ -476,7 +476,7 @@ class IndexerConnection(object):
         if query_type not in self._facet_query_table:
             return None
         facet_dict = self._facet_query_table[query_type]
-        return set([facet for facet, assoc in facet_dict.iteritems() if assoc == association])
+        return set([facet for facet, assoc in facet_dict.items() if assoc == association])
 
     def set_metadata(self, key, value):
         """Set an item of metadata stored in the connection.
@@ -674,7 +674,7 @@ class IndexerConnection(object):
             raise errors.IndexerError("IndexerConnection has been closed")
         if 'facets' in _checkxapian.missing_features:
             raise errors.IndexerError("Facets unsupported with this release of xapian")
-        return self._facet_hierarchy.iteritems()
+        return self._facet_hierarchy.items()
 
     def iter_facet_query_types(self, association):
         """Get an iterator over query types and their associated facets.
@@ -802,7 +802,7 @@ class FacetQueryTypeIter(object):
         IndexerConnection.FacetQueryType_Never).
 
         """
-        self._table_iter = facet_query_table.iteritems()
+        self._table_iter = facet_query_table.items()
         self._association = association
 
     def __iter__(self):
@@ -813,7 +813,7 @@ class FacetQueryTypeIter(object):
 
         """
         query_type, facet_dict = self._table_iter.next()
-        facet_list = [facet for facet, association in facet_dict.iteritems() if association == self._association]
+        facet_list = [facet for facet, association in facet_dict.items() if association == self._association]
         if len(facet_list) == 0:
             return self.next()
         return (query_type, set(facet_list))

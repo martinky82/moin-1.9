@@ -120,7 +120,7 @@ def getblacklist(request, pagename, do_update):
                 # update cache to wait before the next try
                 failure.update("")
 
-            except Error, err:
+            except Error as err:
                 # In case of Error, we log the error and use the local BadContent copy.
                 logging.error(str(err))
 

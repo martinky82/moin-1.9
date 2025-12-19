@@ -116,7 +116,7 @@ def loadSession(key, path=s_path, prefix=s_prefix):
 
     try:
         f = open(filename, "rb")
-    except IOError, e:
+    except IOError as e:
         if e.errno == 2:
             return None # session does not exist
         else:

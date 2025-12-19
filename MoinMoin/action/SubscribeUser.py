@@ -137,7 +137,7 @@ def execute(pagename, request):
 if __name__ == '__main__':
     args = sys.argv
     if len(args) < 2:
-        print >>sys.stderr, """Subscribe users
+        print("""Subscribe users, file=sys.stderr)
 
 %(myname)s pagename [+|-][re:]username[,username[,username[,...]]] [URL]
 

@@ -96,7 +96,7 @@ class CreateFolderCommandMixin (object):
 			try:
 				newFolderPath = mapServerFolder(self.userFilesFolder, combinePaths(currentFolder, newFolder))
 				self.createServerFolder(newFolderPath)
-			except Exception, e:
+			except Exception as e:
 				errorMsg = str(e).decode('iso-8859-1').encode('utf-8') # warning with encodigns!!!
 				if hasattr(e,'errno'):
 					if e.errno==17: #file already exists

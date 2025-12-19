@@ -68,7 +68,7 @@ class SyncPage(object):
         assert remote_rev != 99999999
 
     def __repr__(self):
-        return repr("<Sync Page %r>" % unicode(self))
+        return repr("<Sync Page %r>" % str(self))
 
     def __unicode__(self):
         return u"%s[%s|%s]<%r:%r>" % (self.name, self.local_name, self.remote_name, self.local_rev, self.remote_rev)

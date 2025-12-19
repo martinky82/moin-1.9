@@ -122,7 +122,7 @@ class TestAnonSession(AuthTest):
 
             assert not request.session.is_new
 
-            trail_expected.append(unicode(pagename))
+            trail_expected.append(str(pagename))
 
             # Requested pagenames get into trail?
             assert 'trail' in request.session
@@ -188,7 +188,7 @@ class TestHttpAuthSession(AuthTest):
                 first = False
                 continue
 
-            trail_expected.append(unicode(pagename))
+            trail_expected.append(str(pagename))
 
             # Requested pagenames get into trail?
             assert 'trail' in request.session
@@ -262,7 +262,7 @@ class TestMoinAuthSession(AuthTest):
                 first = False
                 continue
 
-            trail_expected.append(unicode(pagename))
+            trail_expected.append(str(pagename))
 
             # Requested pagenames get into trail?
             assert 'trail' in request.session

@@ -52,5 +52,5 @@ General syntax: moin [options] maint mailimport [mailimport-options]
         result = s.ProcessMail(secret, xmlrpclib.Binary(input.read()))
 
         if result != "OK":
-            print >> sys.stderr, result
+            print(result, file=sys.stderr)
 

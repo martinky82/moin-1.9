@@ -1,13 +1,17 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
-    MoinMoin installer
+    MoinMoin installer (Python 3 version)
 
     @copyright: 2001-2005 by Juergen Hermann <jh@web.de>,
                 2006-2020 by MoinMoin:ThomasWaldmann
     @license: GNU GPL, see COPYING for details.
+
+    Python 3 Migration: Updated for Python 3.8+
 """
 
-import os, sys, glob
+import os
+import sys
+import glob
 
 import distutils
 from distutils.core import setup
@@ -64,7 +68,7 @@ def makeDataFiles(prefix, dir):
     os.path.walk(dir, visit, (prefix, strip, found))
     return found
 
-def visit((prefix, strip, found), dirname, names):
+def visit(args, dirname, names):
     """ Visit directory, create distutil tuple
 
     Add distutil tuple for each directory using this format:
@@ -72,6 +76,7 @@ def visit((prefix, strip, found), dirname, names):
 
     distutil will copy later file1, file2, ... info destination.
     """
+    prefix, strip, found = args
     files = []
     # Iterate over a copy of names, modify names
     for name in names[:]:
@@ -95,7 +100,8 @@ def make_filelist(dir, strip_prefix=''):
         stripping off the strip_prefix at the left side.
     """
     found = []
-    def _visit((found, strip), dirname, names):
+    def _visit(args, dirname, names):
+        found, strip = args
         files = []
         for name in names:
             path = os.path.join(dirname, name)
@@ -177,7 +183,7 @@ class build_scripts_create(build_scripts):
                         % script_vars)
             finally:
                 file.close()
-                os.chmod(outfile, 0755)
+                os.chmod(outfile, 0o755)
 
 
 class build_scripts_moin(build_scripts_create):
@@ -218,7 +224,7 @@ setup_args = {
     a personal notes organizer deployed on a laptop or home web server,
     a company knowledge base deployed on an intranet, or an Internet server
     open to individuals sharing the same interests, goals or projects.""",
-    'classifiers': """Development Status :: 5 - Production/Stable
+    'classifiers': """Development Status :: 4 - Beta
 Environment :: No Input/Output (Daemon)
 Environment :: Web Environment
 Intended Audience :: Developers
@@ -236,8 +242,12 @@ Operating System :: Unix
 Operating System :: MacOS :: MacOS X
 Operating System :: Microsoft :: Windows
 Programming Language :: Python
-Programming Language :: Python :: 2
-Programming Language :: Python :: 2.7
+Programming Language :: Python :: 3
+Programming Language :: Python :: 3.8
+Programming Language :: Python :: 3.9
+Programming Language :: Python :: 3.10
+Programming Language :: Python :: 3.11
+Programming Language :: Python :: 3.12
 Topic :: Internet :: WWW/HTTP :: Dynamic Content
 Topic :: Internet :: WWW/HTTP :: WSGI
 Topic :: Internet :: WWW/HTTP :: WSGI :: Application
@@ -341,7 +351,10 @@ Topic :: Text Processing :: Markup""".splitlines(),
     # This copies the contents of wiki dir under sys.prefix/share/moin
     # Do not put files that should not be installed in the wiki dir, or
     # clean the dir before you make the distribution tarball.
-    'data_files': makeDataFiles('share/moin', 'wiki')
+    'data_files': makeDataFiles('share/moin', 'wiki'),
+
+    # Python 3.8+ required
+    'python_requires': '>=3.8',
 }
 
 if hasattr(distutils.dist.DistributionMetadata, 'get_keywords'):
@@ -354,11 +367,11 @@ if hasattr(distutils.dist.DistributionMetadata, 'get_platforms'):
 if __name__ == '__main__':
     try:
         setup(**setup_args)
-    except distutils.errors.DistutilsPlatformError, ex:
-        print
-        print str(ex)
+    except distutils.errors.DistutilsPlatformError as ex:
+        print()
+        print(str(ex))
 
-        print """
+        print("""
 POSSIBLE CAUSE
 
 "distutils" often needs developer support installed to work
@@ -366,5 +379,5 @@ correctly, which is usually located in a separate package
 called "python%d.%d-dev(el)".
 
 Please contact the system administrator to have it installed.
-""" % sys.version_info[:2]
+""" % sys.version_info[:2])
         sys.exit(1)

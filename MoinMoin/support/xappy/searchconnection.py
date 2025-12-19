@@ -77,7 +77,7 @@ class SearchResult(ProcessedDocument):
 
         """
         actions = self._results._conn._field_actions[field]._actions
-        for action, kwargslist in actions.iteritems():
+        for action, kwargslist in actions.items():
             if action == FieldActions.INDEX_FREETEXT:
                 for kwargs in kwargslist:
                     try:
@@ -301,7 +301,7 @@ class SearchResults(object):
         tophits = []
         nottophits = []
 
-        clusterstarts = dict(((c[0], None) for c in clusters.itervalues()))
+        clusterstarts = dict(((c[0], None) for c in clusters.values()))
         for i in xrange(self.endrank):
             if i in clusterstarts:
                 tophits.append(i)
@@ -323,7 +323,7 @@ class SearchResults(object):
                 actions = self._conn._field_actions[field]._actions
             except KeyError:
                 continue
-            for action, kwargslist in actions.iteritems():
+            for action, kwargslist in actions.items():
                 if action == FieldActions.INDEX_FREETEXT:
                     prefix = self._conn._field_mappings.get_prefix(field)
                     prefixes[prefix] = None
@@ -680,7 +680,7 @@ class SearchResults(object):
             if facettypes[field] == 'float':
                 # Convert numbers to python numbers, and number ranges to a
                 # python tuple of two numbers.
-                for value, frequency in values.iteritems():
+                for value, frequency in values.items():
                     if len(value) <= 9:
                         value1 = _log(_xapian.sortable_unserialise, value)
                         value2 = value1
@@ -689,7 +689,7 @@ class SearchResults(object):
                         value2 = _log(_xapian.sortable_unserialise, value[9:])
                     newvalues.append(((value1, value2), frequency))
             else:
-                for value, frequency in values.iteritems():
+                for value, frequency in values.items():
                     newvalues.append((value, frequency))
 
             newvalues.sort()
@@ -774,7 +774,7 @@ class SearchConnection(object):
             actions = self._field_actions[field]._actions
         except KeyError:
             actions = {}
-        for action, kwargslist in actions.iteritems():
+        for action, kwargslist in actions.items():
             if action == FieldActions.SORT_AND_COLLAPSE:
                 for kwargs in kwargslist:
                     return kwargs['type']
@@ -853,9 +853,9 @@ class SearchConnection(object):
         for handler, userdata in self._close_handlers:
             try:
                 handler(indexpath, userdata)
-            except Exception, e:
+            except Exception as e:
                 import sys, traceback
-                print >>sys.stderr, "WARNING: unhandled exception in handler called by SearchConnection.close(): %s" % traceback.format_exception_only(type(e), e)
+                print("WARNING: unhandled exception in handler called by SearchConnection.close(): %s" % traceback.format_exception_only(type(e), e), file=sys.stderr)
 
     def get_doccount(self):
         """Count the number of documents in the database.
@@ -1015,7 +1015,7 @@ class SearchConnection(object):
         except KeyError:
             actions = {}
         facettype = None
-        for action, kwargslist in actions.iteritems():
+        for action, kwargslist in actions.items():
             if action == FieldActions.FACET:
                 for kwargs in kwargslist:
                     facettype = kwargs.get('type', None)
@@ -1092,7 +1092,7 @@ class SearchConnection(object):
                 actions = self._field_actions[field]._actions
             except KeyError:
                 actions = {}
-            for action, kwargslist in actions.iteritems():
+            for action, kwargslist in actions.items():
                 if action == FieldActions.INDEX_EXACT:
                     # FIXME - need patched version of xapian to add exact prefixes
                     #qp.add_exact_prefix(field, self._field_mappings.get_prefix(field))
@@ -1124,7 +1124,7 @@ class SearchConnection(object):
                     actions = self._field_actions[field]._actions
                 except KeyError:
                     actions = {}
-                for action, kwargslist in actions.iteritems():
+                for action, kwargslist in actions.items():
                     if action == FieldActions.INDEX_FREETEXT:
                         qp.add_prefix('', self._field_mappings.get_prefix(field))
                         # FIXME - set stemming options for the default prefix
@@ -1245,7 +1245,7 @@ class SearchConnection(object):
             actions = {}
 
         # need to check on field type, and stem / split as appropriate
-        for action, kwargslist in actions.iteritems():
+        for action, kwargslist in actions.items():
             if action in (FieldActions.INDEX_EXACT,
                           FieldActions.TAG,
                           FieldActions.FACET,):
@@ -1376,7 +1376,7 @@ class SearchConnection(object):
                 actions = self._field_actions[field]._actions
             except KeyError:
                 actions = {}
-            for action, kwargslist in actions.iteritems():
+            for action, kwargslist in actions.items():
                 if action == FieldActions.INDEX_FREETEXT:
                     prefixes[self._field_mappings.get_prefix(field)] = field
 
@@ -1702,7 +1702,7 @@ class SearchConnection(object):
                     actions = self._field_actions[field]._actions
                 except KeyError:
                     actions = {}
-                for action, kwargslist in actions.iteritems():
+                for action, kwargslist in actions.items():
                     if action == FieldActions.FACET:
                         # filter out non-top-level facets that aren't subfacets
                         # of a facet in the query
